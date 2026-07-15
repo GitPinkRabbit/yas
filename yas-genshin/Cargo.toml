@@ -38,3 +38,7 @@ windows-capture = "1.0.65"
 [[bin]]
 name = "yas_genshin_playground"
 path = "src/bin/playground.rs"
+
+[[bin]]
+name = "yas_debug_region"
+path = "src/bin/debug_region.rs"
