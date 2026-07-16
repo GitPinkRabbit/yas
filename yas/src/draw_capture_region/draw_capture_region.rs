@@ -39,16 +39,23 @@ impl DrawCaptureRegion for Rect<f64> {
         let top = self.top as u32;
         let width = self.width as u32;
         let height = self.height as u32;
-        let bottom = top + height;
-        let right = left + width;
+        let bottom = top + height;   // 截图区域外边缘（下方1px之外）
+        let right = left + width;    // 截图区域外边缘（右侧1px之外）
 
-        for x in left..right {
-            image.put_pixel(x, top, red);
+        // 上边线：y = top - 1（红框下边缘 = 截图区域上边缘）
+        for x in left.saturating_sub(1)..right {
+            image.put_pixel(x, top.saturating_sub(1), red);
+        }
+        // 下边线：y = bottom（红框上边缘 = 截图区域下边缘）
+        for x in left.saturating_sub(1)..right {
             image.put_pixel(x, bottom, red);
         }
-
-        for y in top..bottom {
-            image.put_pixel(left, y, red);
+        // 左边线：x = left - 1（红框右边缘 = 截图区域左边缘）
+        for y in top.saturating_sub(1)..bottom {
+            image.put_pixel(left.saturating_sub(1), y, red);
+        }
+        // 右边线：x = right（红框左边缘 = 截图区域右边缘）
+        for y in top.saturating_sub(1)..bottom {
             image.put_pixel(right, y, red);
         }
     }

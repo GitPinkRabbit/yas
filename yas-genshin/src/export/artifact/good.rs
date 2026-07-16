@@ -290,6 +290,14 @@ fn equip_from_zh_cn(equip: Option<&str>) -> &'static str {
         Some("叶洛亚") => "Illuga",
         Some("哥伦比娅") => "Columbina",
         Some("兹白") => "Zibai",
+        Some("法尔伽") => "Varka",
+        Some("莉奈娅") => "Linnea",
+        Some("布伦妮") => "Prune",
+        Some("尼可") => "Nicole",
+        Some("洛恩") => "Lohen",
+        Some("桑多涅") => "Sandrone",
+        Some("阿罗夏") => "Alyosha",
+        Some("奥黛塔") => "Odette",
         _ => "",
     }
 }
